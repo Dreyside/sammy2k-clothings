@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  min-width: 0;
 }
 
 .contact header {
@@ -31,12 +32,15 @@
   border: 2px solid #cccbc8;
   border-radius: 24px;
   padding: 1.2rem 2rem;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  min-width: 0;
 }
 
 .contact-form h2 {
@@ -63,6 +67,11 @@
   gap: 0.3rem 0.75rem;
 }
 
+.form-grid mat-form-field {
+  width: 100%;
+  min-width: 0;
+}
+
 .full-width {
   grid-column: 1 / -1;
   width: 100%;
@@ -70,6 +79,7 @@
 
 .contact-info {
   padding: 0.25rem 0.4rem;
+  min-width: 0;
 }
 
 .contact-info h2 {
@@ -148,11 +158,16 @@
 .social li {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 0.4rem;
   font-size: 0.83rem;
   color: #5d5d5d;
   margin-bottom: 0.35rem;
   line-height: 1.4;
+}
+
+.social li strong {
+  overflow-wrap: anywhere;
 }
 
 .social li mat-icon {
@@ -204,6 +219,10 @@
 }
 
 @media (max-width: 680px) {
+  .contact-panel {
+    padding: 0.9rem;
+  }
+
   .form-grid {
     grid-template-columns: 1fr;
   }
