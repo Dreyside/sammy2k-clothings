@@ -33,7 +33,7 @@ export class AppComponent {
   readonly title = 'Sammy2k Clothing';
 
   readonly navItems = [
-    { label: 'Home', path: '/galleries' },
+    { label: 'Galleries', path: '/galleries' },
     { label: 'Products', path: '/products' },
     { label: 'Shopping Cart', path: '/cart' },
     { label: 'About Us', path: '/about' },
