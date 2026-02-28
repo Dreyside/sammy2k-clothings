@@ -1,0 +1,99 @@
+<section class="cart">
+  @if (items().length === 0) {
+    <section class="empty-state">
+      <mat-icon class="empty-icon">shopping_bag</mat-icon>
+      <h2>Your cart is empty</h2>
+      <p>Add products from the Products page to see them here.</p>
+    </section>
+  } @else {
+    <section class="cart-layout">
+      <section class="cart-main">
+        <header class="cart-title">
+          <h1>Your Cart ({{ totalQuantity() }} items)</h1>
+        </header>
+
+        <div class="cart-table-head">
+          <span>Item</span>
+          <span>Price</span>
+          <span>Quantity</span>
+          <span>Total</span>
+        </div>
+
+        <div class="cart-items">
+          @for (item of items(); track item.id) {
+            <article class="cart-item-row">
+              <div class="item-details">
+                <img [src]="item.product.imageUrl" [alt]="item.product.name" />
+                <div>
+                  <p class="brand-copy">Sammy2k</p>
+                  <h2>{{ item.product.name }}</h2>
+                  <p class="category-copy">{{ item.product.category }}</p>
+                </div>
+              </div>
+
+              <p class="item-price">${{ item.product.price.toFixed(2) }}</p>
+
+              <div class="qty-control">
+                <button
+                  type="button"
+                  class="qty-btn"
+                  aria-label="Decrease quantity"
+                  (click)="decreaseQuantity(item.id, item.quantity)"
+                >
+                  -
+                </button>
+                <span>{{ item.quantity }}</span>
+                <button
+                  type="button"
+                  class="qty-btn"
+                  aria-label="Increase quantity"
+                  (click)="increaseQuantity(item.id, item.quantity)"
+                >
+                  +
+                </button>
+              </div>
+
+              <div class="item-total-wrap">
+                <p class="item-total">
+                  ${{ (item.quantity * item.product.price).toFixed(2) }}
+                </p>
+                <button
+                  type="button"
+                  class="remove-btn"
+                  aria-label="Remove item"
+                  (click)="removeItem(item.id)"
+                >
+                  ×
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+
+      <aside class="summary-card">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span>${{ subtotal().toFixed(2) }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Sales Tax:</span>
+          <span>${{ salesTax().toFixed(2) }}</span>
+        </div>
+        <div class="summary-row coupon-row">
+          <span>Coupon Code:</span>
+          <button type="button" class="coupon-link">Add Coupon</button>
+        </div>
+        <div class="summary-row grand-total">
+          <span>Grand total:</span>
+          <span>${{ grandTotal().toFixed(2) }}</span>
+        </div>
+
+        <button type="button" class="checkout-btn">Check out</button>
+        <button type="button" class="clear-btn" (click)="clear()">
+          Clear cart
+        </button>
+      </aside>
+    </section>
+  }
+</section>

@@ -1,59 +1,97 @@
-# Sammy2kClothing
+# Sammy2k Clothing – Angular 19 SPA
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.22.
+Sammy2k Clothing is a small but well‑structured Angular 19 single‑page application that simulates a
+US‑based online menswear store. The focus is on clean architecture (signals, standalone components,
+lazy loading) and a simple shopping cart – without authentication or payments – for use as a Masters
+project.
 
-## Development server
+---
 
-To start a local development server, run:
+## Tech stack
+
+- **Framework**: Angular 19 (standalone APIs, signals, `@if` / `@for` templates)
+- **UI**: Angular Material
+- **Routing**: Angular Router with lazy‑loaded, standalone feature components
+- **State**: Angular signals in service layer (`ProductsService`, `CartService`, `GalleryService`)
+- **Assets**: AI‑themed images under `public/images/...`
+- **Runtime**: Docker + nginx (SPA routing)
+
+---
+
+## Application structure
+
+- `src/app/app.component.*` – Shell layout (toolbar, navigation, loading spinner)
+- `src/app/app.routes.ts` – Top‑level routes, each lazily loading a standalone feature:
+  - `/galleries` – AI gallery with Swiper slider
+  - `/products` – Product catalog (menswear only)
+  - `/cart` – Simple shopping cart view (no payments)
+  - `/about` – About Sammy2k Clothing brand and project
+  - `/contact` – Contact form and demo address/socials
+- `src/app/core/services` – Signal‑based data services:
+  - `products.service.ts` – In‑memory catalog for watches, sunglasses, suits, ties, jeans, jerseys,
+    T‑shirts, round necks
+  - `cart.service.ts` – Cart items, totals, and basic operations
+  - `gallery.service.ts` – Hero gallery slides (AI‑style campaigns)
+- `src/app/features/...` – Feature folders for each tab (standalone Angular components)
+
+---
+
+## Running the app locally (without Docker)
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Start the dev server:
+
+   ```bash
+   npm start
+   ```
+
+3. Open `http://localhost:4200` in your browser.
+
+---
+
+## Docker setup
+
+This project includes a multi‑stage Dockerfile that builds the Angular app and serves it with nginx
+as a static SPA.
+
+### Build the image
+
+From the project root:
 
 ```bash
-ng serve
+docker build -t sammy2k-clothing .
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Run the container
 
 ```bash
-ng generate component component-name
+docker run -p 8080:80 sammy2k-clothing
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Then open:
 
-```bash
-ng generate --help
+```text
+http://localhost:8080
 ```
 
-## Building
+The nginx configuration (`nginx.conf`) is set up for SPA routing using `try_files` so deep links
+such as `/products` or `/cart` work correctly when refreshed.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## Notes for project defence
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- The store is intentionally **menswear only** and does **not** implement:
+  - Authentication / user accounts
+  - Payment gateway or real checkout
+  - Admin dashboard
+- The cart is fully functional for adding/removing items and computing totals, but checkout is
+  conceptual only.
+- All images referenced are AI‑style URLs under `public/images/...`; you can replace them with your
+  own AI‑generated assets using the same filenames.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

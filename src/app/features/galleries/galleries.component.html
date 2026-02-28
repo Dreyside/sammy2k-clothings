@@ -1,0 +1,57 @@
+<section class="home-page">
+  <!-- Hero: left copy + right slider (reference image layout) -->
+  <div class="hero-row">
+    <div class="hero-copy">
+      <h1 class="hero-title">Sammy2k Clothing</h1>
+      <p class="hero-subtitle">Mens wear for every moment</p>
+      <p class="hero-description">
+        From campus to the office and weekend outings — watches, sunglasses,
+        suits, ties, jeans, jerseys, tees, and round necks. Quality pieces that
+        work for real life.
+      </p>
+      <div class="btn-container">
+        <a routerLink="/products" class="btn-shop-now">Shop now</a>
+      </div>
+    </div>
+    <div class="hero-slider-wrap">
+      <swiper-container
+        #swiperRef
+        init="false"
+        class="hero-swiper"
+        loop="true"
+        autoplay="true"
+        pagination="true"
+      >
+        @for (image of slides(); track image.id) {
+          <swiper-slide>
+            <img [src]="image.imageUrl" [alt]="image.title" />
+          </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+  </div>
+
+  <!-- Curated looks grid below -->
+  <section class="gallery-section">
+    <h2 class="section-title">Curated looks</h2>
+    <p class="section-lead">
+      Browse campaign imagery and outfit inspiration for campus, office, and
+      weekend.
+    </p>
+    <div class="gallery-grid">
+      @for (slide of slides(); track slide.id) {
+        <article class="slide-card">
+          <a routerLink="/products" class="slide-card-link">
+            <div class="image-wrapper">
+              <img [src]="slide.imageUrl" [alt]="slide.title" loading="lazy" />
+            </div>
+            <div class="slide-content">
+              <h3>{{ slide.title }}</h3>
+              <p>{{ slide.subtitle }}</p>
+            </div>
+          </a>
+        </article>
+      }
+    </div>
+  </section>
+</section>

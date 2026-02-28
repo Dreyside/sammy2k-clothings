@@ -1,0 +1,119 @@
+<section class="contact">
+  <header>
+    <h1>Contact Us</h1>
+    <p>
+      Reach out to Sammy2k Clothing and our team will respond as quickly as
+      possible.
+    </p>
+  </header>
+
+  <section class="contact-panel">
+    <aside class="contact-info">
+      <h2>Send us a message</h2>
+      <p class="intro">
+        We reply to product, order, and partnership inquiries with quick and
+        helpful support.
+      </p>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span class="icon-wrap"><mat-icon>location_on</mat-icon></span>
+          <div>
+            <h3>Address</h3>
+            <p>7427 Maple Harbor Drive, Suite 19<br />Austin, TX 78701, USA</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="icon-wrap"><mat-icon>mail</mat-icon></span>
+          <div>
+            <h3>Email</h3>
+            <p>
+              hello&#64;sammy2kclothing.com<br />support&#64;sammy2kclothing.com
+            </p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="icon-wrap"><mat-icon>phone</mat-icon></span>
+          <div>
+            <h3>Phone</h3>
+            <p>+1 (512) 555-0188<br />+1 (646) 555-0124</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="social">
+        <h3>Social handles</h3>
+        <ul>
+          <li>
+            <mat-icon>thumb_up</mat-icon> Facebook:
+            <strong>facebook.com/sammy2kclothing</strong>
+          </li>
+          <li>
+            <mat-icon>photo_camera</mat-icon> Instagram:
+            <strong>&#64;sammy2kclothing</strong>
+          </li>
+          <li>
+            <mat-icon>chat</mat-icon> WhatsApp:
+            <strong>+1 (917) 555-0199</strong>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()">
+      <h2>Contact for <span>Services</span></h2>
+
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Your Name*</mat-label>
+          <input matInput formControlName="name" />
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <mat-error>Name is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Your Email*</mat-label>
+          <input matInput type="email" formControlName="email" />
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <mat-error>Enter a valid email address.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Your Phone*</mat-label>
+          <input matInput formControlName="phone" />
+          @if (form.controls.phone.touched && form.controls.phone.invalid) {
+            <mat-error>Phone is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Subject*</mat-label>
+          <input matInput formControlName="subject" />
+          @if (form.controls.subject.touched && form.controls.subject.invalid) {
+            <mat-error>Subject is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Your Message</mat-label>
+          <textarea matInput formControlName="message" rows="4"></textarea>
+          @if (form.controls.message.touched && form.controls.message.invalid) {
+            <mat-error>Message should be at least 10 characters.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <button type="submit" class="send-btn">Send Message</button>
+
+      @if (submitted()) {
+        <p class="success">
+          Thanks! Your message was received successfully in this demo.
+        </p>
+      }
+    </form>
+  </section>
+</section>

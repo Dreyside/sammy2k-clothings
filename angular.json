@@ -54,6 +54,12 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/swiper/swiper-bundle.css",
+              "node_modules/swiper/modules/pagination-element.css",
+              "node_modules/swiper/modules/autoplay-element.css",
+              "node_modules/swiper/modules/effect-fade-element.css",
+              "node_modules/swiper/modules/navigation-element.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -113,6 +119,12 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/swiper/swiper-bundle.css",
+              "node_modules/swiper/modules/pagination-element.css",
+              "node_modules/swiper/modules/autoplay-element.css",
+              "node_modules/swiper/modules/effect-fade-element.css",
+              "node_modules/swiper/modules/navigation-element.css",
               "src/styles.scss"
             ],
             "scripts": []

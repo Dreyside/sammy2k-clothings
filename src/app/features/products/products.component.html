@@ -1,0 +1,45 @@
+<section class="products">
+  <header class="products-header">
+    <div class="header-container">
+      <h1>Sammy2k Clothing Products</h1>
+      <p>
+        Browse mens watches, sunglasses, suits, ties, jeans, jerseys, T‑shirts,
+        and round‑neck tops, then add your favourites to the cart.
+      </p>
+    </div>
+  </header>
+
+  <section class="products-grid">
+    @for (product of products(); track product.id) {
+      <mat-card class="product-card">
+        @if (product.badge) {
+          <div class="badge">{{ product.badge }}</div>
+        }
+
+        <div
+          class="product-image"
+          [style.background-image]="'url(' + product.imageUrl + ')'"
+        ></div>
+
+        <mat-card-content>
+          <h2>{{ product.name }}</h2>
+          <p class="category">{{ product.category }}</p>
+          <p class="description">{{ product.description }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <div class="price">${{ product.price }}</div>
+          <button
+            mat-raised-button
+            [color]="isInCart(product.id) ? 'warn' : 'primary'"
+            [class.uncart-button]="isInCart(product.id)"
+            (click)="toggleCart(product)"
+          >
+            <mat-icon>{{ isInCart(product.id) ? 'remove_shopping_cart' : 'add_shopping_cart' }}</mat-icon>
+            {{ isInCart(product.id) ? 'Uncart' : 'Add to cart' }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </section>
+</section>

@@ -1,0 +1,222 @@
+:host {
+  display: block;
+  min-height: 100%;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* Header: clean white bar, logo + nav (reference image) */
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 72px;
+  padding: 0 var(--space-xl);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.brand-icon { 
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+}
+
+.brand-text {
+  letter-spacing: 0.03em;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.cart-length-badge {
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.active-link {
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* Hamburger / close toggle – hidden on desktop */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-primary);
+}
+
+.menu-icon {
+  flex-shrink: 0;
+  color: #1e1e1e;
+}
+
+.menu-toggle:hover .menu-icon {
+  color: var(--color-primary);
+}
+
+.app-content {
+  flex: 1;
+  padding: var(--space-2xl) var(--space-xl);
+  box-sizing: border-box;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1200;
+}
+
+/* Responsive: stack nav, reduce padding */
+@media (max-width: 900px) {
+  .app-toolbar {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Mobile: collapse nav into hamburger menu */
+@media (max-width: 768px) {
+  .app-toolbar {
+    flex-wrap: wrap;
+    padding: 0 var(--space-md);
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-sm);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .app-content {
+    padding: var(--space-lg);
+  }
+
+  .brand-text {
+    font-size: 1rem;
+  }
+
+  .brand-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
