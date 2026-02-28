@@ -1,6 +1,6 @@
 {
   "framework": "angular",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/sammy2k-clothing",
+  "outputDirectory": "dist/sammy2k-clothing/browser",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
