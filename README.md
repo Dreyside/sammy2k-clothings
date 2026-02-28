@@ -1,6 +1,6 @@
-# Sammy2k Clothing – Angular 19 SPA
+# Obasam Clothing – Angular 19 SPA
 
-Sammy2k Clothing is a small but well‑structured Angular 19 single‑page application that simulates a
+Obasam Clothing is a small but well‑structured Angular 19 single‑page application that simulates a
 US‑based online menswear store. The focus is on clean architecture (signals, standalone components,
 lazy loading) and a simple shopping cart – without authentication or payments – for use as a Masters
 project.
@@ -25,7 +25,7 @@ project.
   - `/galleries` – AI gallery with Swiper slider
   - `/products` – Product catalog (menswear only)
   - `/cart` – Simple shopping cart view (no payments)
-  - `/about` – About Sammy2k Clothing brand and project
+  - `/about` – About Obasam Clothing brand and project
   - `/contact` – Contact form and demo address/socials
 - `src/app/core/services` – Signal‑based data services:
   - `products.service.ts` – In‑memory catalog for watches, sunglasses, suits, ties, jeans, jerseys,
@@ -64,13 +64,13 @@ as a static SPA.
 From the project root:
 
 ```bash
-docker build -t sammy2k-clothing .
+docker build -t obasam-clothing .
 ```
 
 ### Run the container
 
 ```bash
-docker run -p 8080:80 sammy2k-clothing
+docker run -p 8080:80 obasam-clothing
 ```
 
 Then open:

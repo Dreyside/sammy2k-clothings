@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sammy2k-clothing": {
+    "obasam-clothing": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/sammy2k-clothing",
+            "outputPath": "dist/obasam-clothing",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -92,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "sammy2k-clothing:build:production"
+              "buildTarget": "obasam-clothing:build:production"
             },
             "development": {
-              "buildTarget": "sammy2k-clothing:build:development"
+              "buildTarget": "obasam-clothing:build:development"
             }
           },
           "defaultConfiguration": "development"

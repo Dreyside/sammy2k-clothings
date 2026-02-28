@@ -18,7 +18,7 @@ FROM nginx:stable-alpine AS runtime
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built Angular app
-COPY --from=build /app/dist/sammy2k-clothing /usr/share/nginx/html
+COPY --from=build /app/dist/obasam-clothing /usr/share/nginx/html
 
 EXPOSE 80
 

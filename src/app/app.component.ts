@@ -30,7 +30,7 @@ export class AppComponent {
   private readonly router = inject(Router);
   private readonly cartService = inject(CartService);
 
-  readonly title = 'Sammy2k Clothing';
+  readonly title = 'Obasam Clothing';
 
   readonly navItems = [
     { label: 'Galleries', path: '/galleries' },
